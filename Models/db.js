@@ -8,3 +8,5 @@ mongoose.connect(process.env.MONGODB_URI, (err) => {
         console.log('Error in MongoDb connection : ' + JSON.stringify(err,undefined,2));
     }
 });
+
+require('./user.model');
