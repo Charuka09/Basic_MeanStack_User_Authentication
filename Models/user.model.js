@@ -8,16 +8,18 @@ var userSchema =  new mongoose.Schema({
     },
     email: {
         type:String,
-        required: 'email can\'t be empty'
+        required: 'email can\'t be empty',
+        unique : true
     },
     password: {
         type:String,
-        required: 'Password can\'t be empty'
+        required: 'Password can\'t be empty',
+        minlength : [4,'password must be atleast 4 characters long']
     },
     //used for encryption and decryptyion
     saltSecret: String
 });
-
+ 
 //custom validation
 userSchema.path('email').validate((val) => {
     emailval = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
